@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>README - Mediatekformation</title>
 </head>
 <body>
     <h1>README - Mediatekformation</h1>
@@ -22,15 +21,15 @@
     <ul>
         <li>Demande de renseigner l'ID dans le premier label.</li>
         <li>Demande de renseigner le Mot de Passe dans le second label.</li>
-        ![Authentification](https://github.com/user-attachments/assets/480ee42b-6499-4047-b011-669fe6fa880a)
     </ul>
+    ![Authentification](https://github.com/user-attachments/assets/7e1e9397-ab85-4449-be2a-e50bd22823ab)
 
 <h3>Page 2 : Les formations</h3>
     <ul>
         <li>Contient une nouvelle colonne "Action" permettant d'Ajouter, de Modifier ou de Supprimer une formation.</li>
         <li>Contient le bouton de déconnexion en bas à droite de la page.</li>
-        ![Formations](https://github.com/user-attachments/assets/3ac2dbc0-02af-40cf-b632-309d88a5a95a)
     </ul>
+    ![Formations](https://github.com/user-attachments/assets/3ac2dbc0-02af-40cf-b632-309d88a5a95a)
 
 <h3>Page 3 : Ajout et modification d'une formation</h3>
     <ul>
@@ -43,45 +42,74 @@
                 <li>Titre : Obligation de remplir ce champ.</li>
                 <li>Playlist associé à la formation : Champ prérempli et possibilité de choisi la playlist voulu.</li>
                 <li>Catégorie : Non obligatoire.</li>
-                <li>Bouton de déconnexion en bas à droite de la page</li>
+                <li>Bouton de déconnexion en bas à droite de la page.</li>
             </ul>
         </li>
         ![Ajout formation](https://github.com/user-attachments/assets/e3f13913-c233-4dce-a3a5-f855cfb05d6e)
-        <li>Pour la modification d'une formation, la page est la même mais son contenu est prérempli en fonction des informations de la formation à modifier.</li>
+        <li>Accessible uniquement en cliquant sur le bouton modifier dans la colonne Actions.</li>
         ![Modifs formation](https://github.com/user-attachments/assets/feb278b6-b6b3-4aff-8558-e9d55ff80dc6)
-        <li>Si le bouton supprimer est pressé, un message de confirmation sera demandé. Si validation, la formation sera supprimer de la page et de la Base de données</li>
+        <li>Si le bouton supprimer est pressé, un message de confirmation sera demandé. Si validation, la formation sera supprimer de la page et de la Base de données.</li>
     </ul>
 
 <h3>Page 4 : Les playlists</h3>
     <ul>
-        <li>Affichage d'un tableau listant les playlists disponibles.</li>
-        <li>Colonnes du tableau :
-            <ul>
-                <li><strong>Playlist :</strong> Nom de chaque playlist.</li>
-                <li><strong>Catégories :</strong> Catégories concernées.</li>
-                <li><strong>Bouton :</strong> Lien vers la page de détail de la playlist.</li>
-            </ul>
-        </li>
-        <li>Fonctionnalités interactives :
-            <ul>
-                <li>Tri par ordre croissant ou décroissant sur la colonne Playlist.</li>
-                <li>Filtrage par texte sur la colonne Playlist.</li>
-                <li>Filtrage par catégorie via un menu déroulant.</li>
-            </ul>
-        </li>
-        <li>Tri par défaut : ordre alphabétique de la playlist.</li>
-        <li>Cliquer sur "voir détail" mène à la page de détail de la playlist.</li>
+        <li>Contient une nouvelle colonne Nombre de formations, permettant d'afficher le nombre de formations reliées à chaques playlists.</li>
+        <li>Contient un système de tris par ordre croissant et décroissant du nombre de formations.</li>
+        <li>Contient une nouvelle colonne "Action" permettant d'Ajouter, de Modifier ou de Supprimer une playlist.</li>
+        <li>Contient le bouton de déconnexion en bas à droite de la page.</li>
     </ul>
+    ![Playlists](https://github.com/user-attachments/assets/ec03dd65-b03d-4a8a-b9e7-cb07336b18f2)
 
 <h3>Page 5 : Détail d'une playlist</h3>
     <ul>
         <li>Accessible uniquement via le bouton "voir détail" depuis la page des playlists.</li>
         <li>Contenu :
             <ul>
-                <li>Partie gauche : Informations sur la playlist (titre, catégories, description).</li>
-                <li>Partie droite : Liste des formations associées (miniature et titre, cliquables pour accéder à leur détail).</li>
+                <li>Partie gauche : Nombre de formations liées à la playlist.</li>
+                <li>En bas à droite : Bouton de déconnexion.</li>
             </ul>
         </li>
+    </ul>
+    ![Playlist](https://github.com/user-attachments/assets/d336648c-f79d-47e3-8529-3cfdd06230f6)
+
+<h3>Page 6 : Ajout et modification d'une playlist</h3>
+    <ul>
+        <li>Accessible uniquement en cliquant sur le bouton ajouter dans la colonne Actions.</li>
+        <li>Contenu :
+            <ul>
+                <li>Nom : Obligation de remplir ce champ.</li>
+                <li>Description de la formation : Non obligatoire.</li>
+                <li>Bouton de déconnexion en bas à droite de la page.</li>
+            </ul>
+        </li>
+        ![AjoutPlaylist](https://github.com/user-attachments/assets/2137c0b3-7c6a-47df-af43-a2cfd1db7848)
+        <li>Accessible uniquement en cliquant sur le bouton modifier dans la colonne Actions.</li>
+        <li>Liste avec les miniatures des formations associées à la playlist.</li>
+        ![ModificationPlaylist](https://github.com/user-attachments/assets/8d3232e6-ff24-4a95-8da7-3a015497dde0)
+        <li>Si le bouton supprimer est pressé, un message de confirmation sera demandé.</li>
+        <li>Si la playlist est utilisé dans une formation, et que le message de confirmation de suppression et validé, un message d'erreur apparait et la playlist ne sera pas supprimer.</li> 
+    </ul>
+
+<h3>Page 7 : Les catégories</h3>
+    <ul>
+        <li>Contient une liste des catégories.</li>
+        <li>Contient une colonne "Action" permettant d'Ajouter ou de Supprimer une catégorie.</li>
+        <li>Contient le bouton de déconnexion en bas à droite de la page.</li>
+    </ul>
+    ![Catégories](https://github.com/user-attachments/assets/d027ce66-c78f-4667-9748-869e01eb0947)
+
+<h3>Page 8 : Ajout d'une catégorie</h3>
+    <ul>
+        <li>Accessible uniquement en cliquant sur le bouton ajouter dans la colonne Actions.</li>
+        <li>Contenu :
+            <ul>
+                <li>Nom : Obligation de remplir ce champ.</li>
+                <li>Bouton de déconnexion en bas à droite de la page.</li>
+            </ul>
+        </li>
+        ![AjoutCatégorie](https://github.com/user-attachments/assets/09479faf-cd8f-4a23-8b6a-992fa4ea5932)
+        <li>Si le bouton supprimer est pressé, un message de confirmation sera demandé.</li>
+        <li>Si la catégorie est utilisé dans une formation, et que le message de confirmation de suppression et validé, un message d'erreur apparait et la catégorie ne sera pas supprimer.</li> 
     </ul>
 
 <h2>Base de données</h2>
