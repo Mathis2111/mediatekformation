@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
 <body>
     <h1>README - Mediatekformation</h1>
 
@@ -22,14 +16,16 @@
         <li>Demande de renseigner l'ID dans le premier label.</li>
         <li>Demande de renseigner le Mot de Passe dans le second label.</li>
     </ul>
-    ![Authentification](https://github.com/user-attachments/assets/7e1e9397-ab85-4449-be2a-e50bd22823ab)
+    ![Authentification](https://github.com/user-attachments/assets/d92d5026-92be-4d51-9d42-c44e6f36783b)
+
 
 <h3>Page 2 : Les formations</h3>
     <ul>
         <li>Contient une nouvelle colonne "Action" permettant d'Ajouter, de Modifier ou de Supprimer une formation.</li>
         <li>Contient le bouton de déconnexion en bas à droite de la page.</li>
     </ul>
-    ![Formations](https://github.com/user-attachments/assets/3ac2dbc0-02af-40cf-b632-309d88a5a95a)
+    ![Formations](https://github.com/user-attachments/assets/bffac3c6-09e8-4742-9d6d-9d44b5e5d421)
+
 
 <h3>Page 3 : Ajout et modification d'une formation</h3>
     <ul>
