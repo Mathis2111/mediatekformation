@@ -1,0 +1,64 @@
+{% extends "basefront.html.twig" %}
+{% block body %}
+     <!-- Table affichant les catégories -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <!-- Colonne des catégories avec formulaire de filtrage -->
+                <th class="text-left align-top" scope="col">
+                    catégories
+                    <!-- Formulaire pour rechercher/filter par ID de catégorie -->
+                    <form class="form-inline mt-1" method="POST" action="{{ path('categories.findallcontain', {champ:'id', table:'categories'}) }}">
+                        <select class="form-select form-select-sm" name="recherche" id="recherche" onchange="this.form.submit()" style="display: none;">
+                            <option value=""></option>
+                            <!-- Liste déroulante des catégories avec sélection possible -->
+                            {% for categorie in categories %}
+                                <option 
+                                    {% if valeur|default and valeur==categorie.id %} 
+                                        selected
+                                    {% endif %} 
+                                    value="{{ categorie.id }}">{{ categorie.name }}
+                                </option>
+                            {% endfor %}
+                        </select>                    
+                    </form>            
+                </th>
+                <!-- Colonne des actions (ajouter et supprimer une catégorie) -->
+                <th class="text-center align-top" scope="col">Actions
+                    <div class="mt-2">
+                        <a href="{{ path('categories.form') }}" class="btn btn-success btn-sm">Ajouter</a>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <!-- Affichage des messages flash (succès ou erreur) -->
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label == 'error' ? 'danger' : 'success' }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <tbody>
+            <!-- Liste des catégories dans le tableau -->
+            {% for categorie in categories %}
+                <tr class="align-middle">                    
+                    <td class="text-left">
+                        <h5>
+                            {{ categorie.name }}
+                        </h5>
+                    </td>
+                    <!-- Colonne des actions (supprimer) -->
+                        <td class="text-center">
+                            <div class="d-inline-flex">
+                                <form method="POST" action="{{ path('categories.delete', {id: categorie.id}) }}" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette catégorie ?');">
+                                    <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                                </form>
+                            </div>
+                        </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

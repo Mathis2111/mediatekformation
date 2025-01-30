@@ -3,6 +3,7 @@
     <div class="row mt-3">
         <div class="col">
             <h4 class="text-info mt-5">{{ playlist.name }}</h4>
+            <!-- Affichage des catégories associées à la playlist -->
             <strong>catégories : </strong>
                 <!-- boucle pour afficher les catégories -->
                 {% set anccategorie = '' %}
@@ -10,8 +11,13 @@
                     {{ playlist.name }}&nbsp;
                 {% endfor %}
             <br /><br />
+            <!-- Description de la playlist -->
             <strong>description :</strong><br />
                 {{ playlist.description|nl2br }}
+            <br /><br />
+            <!-- Nombre de formations dans la playlist -->
+            <strong>nombre de formations :</strong><br />
+                {{ playlist.nbFormations }}
         </div>
         <div class="col">
             <!-- boucle sur l'affichage des formations -->
@@ -25,6 +31,7 @@
                         {% endif %}  
                     </div>
                     <div class="col d-flex align-items-center">
+                        <!-- Titre de la formation avec un lien vers la page de détails -->
                         <a href="{{ path('formations.showone', {id:formation.id}) }}" 
                            class="link-secondary text-decoration-none">
                             {{ formation.title }}

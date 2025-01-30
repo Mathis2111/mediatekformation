@@ -6,11 +6,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 /**
  * Description of AccueilController
  *
  * @author emds
  */
+
 class AccueilController extends AbstractController{
     
     /**
@@ -28,6 +30,11 @@ class AccueilController extends AbstractController{
     
     #[Route('/', name: 'accueil')]
     public function index(): Response{
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('login');
+        }
+
+        // Charge les formations si l'utilisateur est connecté
         $formations = $this->repository->findAllLasted(2);
         return $this->render("pages/accueil.html.twig", [
             'formations' => $formations

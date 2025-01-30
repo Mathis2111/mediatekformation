@@ -1,8 +1,10 @@
 {% extends "basefront.html.twig" %}
 {% block body %}
+    <!-- Tableau des formations avec options de tri et de filtre -->
     <table class="table table-striped">
         <thead>
             <tr>
+                <!-- Colonne pour les informations des formations -->
                 <th class="text-left align-top" scope="col">
                     formation<br />
                     <a href="{{ path('formations.sort', {champ:'title', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
@@ -16,6 +18,7 @@
                         </div>
                     </form>                    
                 </th>
+                <!-- Colonne pour les informations des playlists -->
                 <th class="text-left align-top" scope="col">
                     playlist<br />
                     <a href="{{ path('formations.sort', {table:'playlist', champ:'name', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
@@ -29,6 +32,7 @@
                         </div>
                     </form>                    
                 </th>
+                <!-- Colonne pour les informations des catégories -->
                 <th class="text-left align-top" scope="col">
                     catégories
                     <form class="form-inline mt-1" method="POST" action="{{ path('formations.findallcontain', {champ:'id', table:'categories'}) }}">
@@ -45,6 +49,7 @@
                         </select>                    
                     </form>            
                 </th>
+                <!-- Colonne pour les informations des dates de publication -->
                 <th class="text-center align-top" scope="col">
                     date<br />
                     <a href="{{ path('formations.sort', {champ:'publishedAt', ordre:'ASC'}) }}" class="btn btn-info btn-sm active" role="button" aria-pressed="true"><</a>
@@ -53,9 +58,25 @@
                 <th class="text-center align-top" scope="col">
                     &nbsp;
                 </th>
+                <!-- Colonne pour les actions -->
+                <th class="text-center align-top" scope="col">Actions
+                    <div class="mt-2">
+                        <a href="{{ path('formations.form') }}" class="btn btn-success btn-sm">Ajouter</a>
+                    </div>
+                </th>
             </tr>
         </thead>
+        <!-- Affichage des messages flash (erreurs ou succès) -->
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label == 'error' ? 'danger' : 'success' }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endfor %}
         <tbody>
+            <!-- Boucle pour afficher les formations -->
             {% for formation in formations %}
                 <tr class="align-middle">
                     <td>
@@ -64,7 +85,11 @@
                         </h5>
                     </td>
                     <td class="text-left">
-                        {{ formation.playlist.name }}                  
+                        {% if formation.playlist %}
+                            {{ formation.playlist.name }}
+                        {% else %}
+                            Playlist non définie
+                        {% endif %}                  
                     </td>                    
                     <td class="text-left">
                         {% for categorie in formation.categories %}
@@ -81,6 +106,16 @@
                             </a>
                         {% endif %}
                     </td>
+                        <td class="text-center">
+                            <div class="d-inline-flex">
+                                <!-- Bouton pour modifier la formation -->
+                                <a href="{{ path('formations.form', {id: formation.id}) }}" class="btn btn-warning btn-sm me-2">Modifier</a>
+                                <!-- Bouton pour supprimer la formation -->
+                                <form method="POST" action="{{ path('formations.delete', {id: formation.id}) }}" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette formation ?');">
+                                    <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                                </form>
+                            </div>
+                        </td>
                 </tr>
             {% endfor %}
         </tbody>

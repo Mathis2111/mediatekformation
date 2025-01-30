@@ -27,6 +27,8 @@ class Playlist
      */
     #[ORM\OneToMany(targetEntity: Formation::class, mappedBy: 'playlist')]
     private Collection $formations;
+    
+    private int $nbFormations = 0;
 
     public function __construct()
     {
@@ -100,12 +102,22 @@ class Playlist
         $categories = new ArrayCollection();
         foreach($this->formations as $formation){
             $categoriesFormation = $formation->getCategories();
-            foreach($categoriesFormation as $categorieFormation)
-            if(!$categories->contains($categorieFormation->getName())){
-                $categories[] = $categorieFormation->getName();
+            foreach($categoriesFormation as $categorieFormation){
+                if(!$categories->contains($categorieFormation->getName())){
+                    $categories[] = $categorieFormation->getName();
+                }
             }
         }
         return $categories;
     }
-        
+       
+    public function setNbFormations(int $nbFormations): self
+    {
+        $this->nbFormations = $nbFormations;
+        return $this;
+    }
+    
+    public function getNbFormations(): int {
+        return count($this->getFormations());
+    }
 }

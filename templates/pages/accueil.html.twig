@@ -1,6 +1,7 @@
 {% extends "basefront.html.twig" %}
 
 {% block body %}
+    <!-- Section d'introduction avec un message de bienvenue -->
     <p class="mt-3">
         <h3>Bienvenue sur le site de MediaTek86 consacré aux formations en ligne</h3>
     </p>
@@ -12,6 +13,7 @@
         Vous pouvez aussi retrouver les vidéos regroupées dans des playlists, dans la partie <strong><a href="{{ path('playlists') }}" class="link-info">Playlists</a></strong>.
     </p>
     <p>
+        <!-- Affichage des deux dernières formations ajoutées -->
         Voici les <strong>deux dernières formations</strong> ajoutées au catalogue :
         <table class="table">
             <tr>
@@ -28,11 +30,15 @@
                                 {% endif %}
                             </div>
                             <div class="col">
+                                <!-- Affichage de la date de publication de la formation -->
                                 <p>{{ formation.publishedatstring }}</p>
+                                <!-- Affichage du titre de la formation -->
                                 <h5 class="text-info mt-1">
                                     {{ formation.title }}
                                 </h5>
+                                <!-- Affichage du nom de la playlist associée -->
                                 <strong>playlist : </strong>{{ formation.playlist.name }}<br />
+                                <!-- Affichage des catégories associées à la formation -->
                                 <strong>catégories : </strong> 
                                 {% for categorie in formation.categories %}
                                     {{ categorie.name }}&nbsp;

@@ -16,12 +16,14 @@ class PlaylistRepository extends ServiceEntityRepository
         parent::__construct($registry, Playlist::class);
     }
 
+    // Ajoute une entité Playlist à la base de données
     public function add(Playlist $entity): void
     {
         $this->getEntityManager()->persist($entity);
         $this->getEntityManager()->flush();
     }
 
+    // Enlève une entité Playlist à la base de données
     public function remove(Playlist $entity): void
     {
         $this->getEntityManager()->remove($entity);
@@ -75,6 +77,29 @@ class PlaylistRepository extends ServiceEntityRepository
                     ->getQuery()
                     ->getResult();              
         }           
-    }    
+    } 
     
+    /**
+    * Récupère toutes les playlists avec le nombre de formations associées,
+    * triées par nombre de formations dans l'ordre spécifié.
+    * @param string $ordre L'ordre de tri des playlists basé sur le nombre de formations. 
+    *                       Cela peut être "ASC" pour croissant ou "DESC" pour décroissant.
+    * @return array Un tableau d'objets Playlist, avec le nombre de formations associé.
+    */
+    public function findAllWithFormationCount(string $ordre): array
+    {
+        $result = $this->createQueryBuilder('p')
+            ->select('p', 'COUNT(f.id) as nb_formations')
+            ->leftJoin('p.formations', 'f')
+            ->groupBy('p.id')
+            ->orderBy('nb_formations', $ordre)
+            ->getQuery()
+            ->getResult();
+
+        foreach ($result as $data) {
+            $data[0]->setNbFormations($data['nb_formations']);
+        }
+
+        return array_column($result, 0);
+    }
 }

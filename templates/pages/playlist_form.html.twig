@@ -1,0 +1,54 @@
+{% extends "basefront.html.twig" %}
+{% block body %}
+    <h1>{{ isEdit ? 'Modifier' : 'Ajouter' }} une Playlist</h1>
+    <!-- Début du formulaire de création ou de modification de la playlist -->
+    {{ form_start(form) }}
+        <!-- Champ de saisie pour le nom de la playlist -->
+        <div class="form-group">
+            {{ form_row(form.name) }}
+        </div>
+        &nbsp;
+        <!-- Champ de saisie pour la description de la playlist -->
+        <div class="form-group">
+            {{ form_row(form.description) }}
+        </div>
+        &nbsp;
+        <h2>Liste des formations associées</h2>
+        <!-- Vérification si des formations sont associées à la playlist -->
+        {% if formations|length > 0 %}
+            <div class="col">
+            <!-- Boucle pour afficher chaque formation associée à la playlist -->
+            {% for formation in playlistformations %}
+                <div class="row mt-1">
+                    <div class="col-md-auto">
+                        <!-- Affichage de la miniature de la formation -->
+                        {% if formation.miniature %}
+                            <a href="{{ path('formations.showone', {id:formation.id}) }}">
+                                <img src="{{ formation.miniature }}">
+                            </a>
+                        {% endif %}  
+                    </div>
+                    <div class="col d-flex align-items-center">
+                        <!-- Lien vers la page de détails de la formation -->
+                        <a href="{{ path('formations.showone', {id:formation.id}) }}" 
+                           class="link-secondary text-decoration-none">
+                            {{ formation.title }}
+                        </a>          
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <!-- Message affiché si aucune formation n'est associée -->
+            <p>Aucune formation associée à cette playlist.</p>
+        {% endif %}
+        
+        &nbsp;
+        <!-- Bouton d'enregistrement pour soumettre le formulaire -->
+        <div class="form-group">
+            {{ form_row(form.save) }}
+        </div>
+        &nbsp;
+    {{ form_end(form) }}
+    
+{% endblock %}

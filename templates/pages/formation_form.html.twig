@@ -1,0 +1,40 @@
+{% extends "basefront.html.twig" %}
+
+{% block body %}
+    <!-- Titre : 'Ajouter' ou 'Modifier' -->
+    <h1>{{ isEdit ? 'Modifier' : 'Ajouter' }} une Formation</h1>
+    <!-- Début du formulaire -->
+    {{ form_start(form) }}
+        <!-- Formulaire pour le titre de la formation -->
+        <div class="form-group">
+            {{ form_row(form.title) }}
+        </div>
+        &nbsp;
+        <!-- Formulaire pour la description de la formation -->
+        <div class="form-group">
+            {{ form_row(form.description) }}
+        </div>
+        &nbsp;
+        <!-- Formulaire pour la date de publication de la formation -->
+        <div class="form-group">
+            {{ form_row(form.publishedAt) }}
+        </div>
+        &nbsp;
+        <!-- Formulaire pour la sélection de la playlist -->
+        <div class="form-group">
+            {{ form_row(form.playlist) }}
+        </div>
+        &nbsp;
+        <!-- Formulaire pour la sélection des catégories -->
+        <div class="form-group">
+            {{ form_row(form.categories) }}
+        </div>
+        &nbsp;
+        <!-- Formulaire pour le bouton enregistrer -->
+        <div class="form-group">
+            {{ form_row(form.save) }}
+        </div>
+        &nbsp;
+    {{ form_end(form) }}
+    
+{% endblock %}

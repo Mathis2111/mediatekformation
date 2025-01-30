@@ -17,15 +17,21 @@
                 </div>                                             
             {% endif %}
         </div>
+        <!-- Colonne pour afficher les informations détaillées de la formation -->
         <div class="col">
+            <!-- Affichage de la date de publication de la formation -->
             {{ formation.publishedatstring }}
+            <!-- Titre de la formation -->
             <h4 class="text-info mt-5">{{ formation.title }}</h4>
+            <!-- Affichage de la playlist associée à la formation -->
             <strong>playlist : </strong>{{ formation.playlist.name }}<br />
+            <!-- Affichage des catégories associées à la formation -->
             <strong>catégories : </strong>
                 {% for categorie in formation.categories %}
                     {{ categorie.name }}&nbsp;
                 {% endfor %}
             <br /><br />
+            <!-- Affichage de la description de la formation -->
             <strong>description :</strong><br />
                 {{ formation.description|nl2br }}
         </div>

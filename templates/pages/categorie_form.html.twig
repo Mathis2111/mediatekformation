@@ -1,0 +1,25 @@
+{% extends "basefront.html.twig" %}
+{% block body %}
+    <!-- Affichage des messages flash (succès ou erreur) -->
+    {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label == 'error' ? 'danger' : 'success' }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+    <!-- Mise en page de la page d'ajout de catégorie -->
+    <h1>{{ 'Ajouter' }} une Categorie</h1>
+    {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_row(form.name) }}
+        </div>
+        &nbsp;
+        <div class="form-group">
+            {{ form_row(form.save) }}
+        </div>
+        &nbsp;
+    {{ form_end(form) }}
+{% endblock %}
+
