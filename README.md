@@ -1,6 +1,7 @@
 # README - Mediatekformation
 
-**Lien vers le dépôt du projet** : [https://github.com/Mathis2111/mediatekformation](https://github.com/Mathis2111/mediatekformation)
+**Lien vers le dépôt du projet** : (https://github.com/CNED-SLAM/mediatekformation)
+<br>Ce lien vous emmènes vers le dépôt d'origine qui contient, dans le readme, la présentation de l'application d'origine.</br>
 
 ## Présentation
 Mediatekformation est un site développé avec **Symfony 6.4**, permettant d'accéder aux vidéos d'auto-formation proposées par une chaîne de médiathèques, également disponibles sur YouTube.  
