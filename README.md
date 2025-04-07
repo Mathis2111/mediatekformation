@@ -1,6 +1,6 @@
 # README - Mediatekformation
 
-**Lien vers le dépôt du projet** : (https://github.com/CNED-SLAM/mediatekformation)
+**Lien vers le dépôt du projet** : https://github.com/CNED-SLAM/mediatekformation
 <br>Ce lien vous emmènes vers le dépôt d'origine qui contient, dans le readme, la présentation de l'application d'origine.</br>
 
 ## Présentation
