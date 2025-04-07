@@ -5,7 +5,7 @@
 
 ## Présentation
 Mediatekformation est un site développé avec **Symfony 6.4**, permettant d'accéder aux vidéos d'auto-formation proposées par une chaîne de médiathèques, également disponibles sur YouTube.  
-Ce site web inclut plusieurs fonctionnalités globales décrites ci-dessous.
+Ce site web inclut plusieurs fonctionnalités globales décrites ci-dessous. Voici le lien vers l'application en ligne : [Application](https://mediatek-formation.go.yj.fr/mediatekformation/public/)
 
 ## Les différentes pages
 Le site comprend 11 pages correspondant à différents cas d’utilisation, mais je vais vous présenter seulement les pages ayant subi des modifications :
